@@ -40,6 +40,7 @@ function genPoint(){
     }
     else{
         return point;
+    
     }
     
 }
@@ -86,7 +87,7 @@ function shiftUp(){
             val++;
         }
     }
-    let point = genPoint();
+    let point = genPoint(); //promise
     board[point.x][point.y] = point.val;
     renderBoard();
 }
@@ -133,19 +134,19 @@ function shiftDown(){
             val--;
         }
     }
-    let point = genPoint();
+    let point = genPoint(); //promise
     board[point.x][point.y] = point.val;
     renderBoard();
 }
 function shiftLeft(){
     // shift array
-    let point = genPoint();
+    let point = genPoint(); //promise
     board[point.x][point.y] = point.val;
     renderBoard();
 }
 function shiftRight(){
     // shift array
-    let point = genPoint();
+    let point = genPoint(); // pormise
     board[point.x][point.y] = point.val;
     renderBoard();
 }
@@ -175,11 +176,14 @@ $(document).keydown(function(e){ //update array, then render
 
 
 function startBoard(){
-    let point = genPoint();
+    let point = genPoint()
     board[point.x][point.y] = point.val;
     point = genPoint();
     board[point.x][point.y] = point.val;
     renderBoard();
+    // promises or something
+    
+    
 }
 
 
