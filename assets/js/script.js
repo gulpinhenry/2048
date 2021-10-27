@@ -39,7 +39,7 @@ function genPoint(){
         genPoint();
     }
     else{
-        return point;
+        return new Promise((resolve,reject)=> resolve(point));
     
     }
     
@@ -69,7 +69,7 @@ function pushUp(){
         }
     }
 }
-function shiftUp(){
+async function shiftUp(){
     // shift array
     pushUp();
     for(let i = 0; i<board.length; i++)
@@ -87,7 +87,7 @@ function shiftUp(){
             val++;
         }
     }
-    let point = genPoint(); //promise
+    let point = await genPoint(); //promise
     board[point.x][point.y] = point.val;
     renderBoard();
 }
@@ -117,7 +117,7 @@ function pushDown(){
     }
 }
 
-function shiftDown(){
+async function shiftDown(){
     pushDown();
     for(let i = 0; i<board.length; i++)
     {
@@ -134,17 +134,17 @@ function shiftDown(){
             val--;
         }
     }
-    let point = genPoint(); //promise
+    let point = await genPoint(); //promise
     board[point.x][point.y] = point.val;
     renderBoard();
 }
-function shiftLeft(){
+async function shiftLeft(){
     // shift array
     let point = genPoint(); //promise
     board[point.x][point.y] = point.val;
     renderBoard();
 }
-function shiftRight(){
+async function shiftRight(){
     // shift array
     let point = genPoint(); // pormise
     board[point.x][point.y] = point.val;
@@ -175,10 +175,10 @@ $(document).keydown(function(e){ //update array, then render
 });
 
 
-function startBoard(){
-    let point = genPoint()
+async function startBoard(){
+    let point = await genPoint();
     board[point.x][point.y] = point.val;
-    point = genPoint();
+    point = await genPoint();
     board[point.x][point.y] = point.val;
     renderBoard();
     // promises or something
